@@ -2,7 +2,7 @@
 #
 # Module to extract endnote data to a CSV spreadsheet.
 #   Written by: Tom Hicks. 6/25/20.
-#   Last Modified: Initial creation.
+#   Last Modified: Remove trailing spaces.
 #
 import os
 import sys
@@ -80,7 +80,7 @@ def main (argv=None):
 
         pubDate = rec.find('./dates/year/style')
         line['PubDate'] = pubDate.text if ((pubDate is not None) and (pubDate.text is not None)) else ''
-    
+
         journal = rec.find('./titles/secondary-title/style')
         line['Journal'] = journal.text if ((journal is not None) and (journal.text is not None)) else ''
 
@@ -129,15 +129,15 @@ def read_xml (infile):
     return tree.getroot()
 
 
-def save_to_CSV (lines, filename): 
-    # specifying the fields for csv file 
+def save_to_CSV (lines, filename):
+    # specifying the fields for csv file
     fields = ['Authors', 'PubDate', 'Title', 'Journal', 'Volume', 'Label', 'WorkType']
-  
-    # writing to csv file 
-    with open(filename, 'w') as csvfile: 
-        writer = csv.DictWriter(csvfile, fieldnames=fields) 
-        writer.writeheader() 
-        writer.writerows(lines) 
+
+    # writing to csv file
+    with open(filename, 'w') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(lines)
 
 
 
