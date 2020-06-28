@@ -66,7 +66,6 @@ def main (argv=None):
     args['PROG_NAME'] = PROG_NAME
     args['VERSION'] = VERSION
 
-    # TODO: do the work
     if (args.get('verbose')):
         print("{} called with arguments: {}".format(PROG_NAME, args))
 
